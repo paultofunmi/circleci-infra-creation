@@ -51,18 +51,10 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      - destroy_environment
       - run:
           name: smoke test
-          command: |
-            URL="https://blog.udacity9929.com/"
-            # Test if website exists
-            if curl -s --head ${URL} 
-            then
-              return 0
-            else
-              return 1
-            fi
+          command: return 1
+      - destroy_environment
 
 workflows:
   create-infra-workflow:
