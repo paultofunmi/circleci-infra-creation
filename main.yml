@@ -2,9 +2,6 @@
 # Remote Control Using Ansible
 - name: Remote Control Using Ansible
   hosts: localhost
-  vars:
-    ansible_connection: local
-    ansible_python_interpreter: "{{ ansible_playbook_python }}"
   user: ubuntu
   become: true
   become_method: sudo
