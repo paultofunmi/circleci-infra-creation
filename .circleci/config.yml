@@ -16,6 +16,7 @@ jobs:
       - run:
           name: write ip address to inventory
           command: |
+            echo -e "\n"
             aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --filters "Name=tag:Project,Values=udacity" --output text >> inventory
       - run:
           name: output inventory
