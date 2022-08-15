@@ -23,25 +23,25 @@ jobs:
           command: |
             cat inventory
 
-  configure_infrastructure:
-    docker:
-      - image: python:3.7-alpine3.11
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints: "da:8f:d1:a4:4a:9a:85:88:be:28:95:1f:0c:07:68:08"
-      - run:
-          name: Install Ansible
-          command: |
-            apk add --update ansible
-      - run:
-          name: Run Playbook and Configure server
-          command: |
-            ansible-playbook -i inventory main.yml
+  # configure_infrastructure:
+  #   docker:
+  #     - image: python:3.7-alpine3.11
+  #   steps:
+  #     - checkout
+  #     - add_ssh_keys:
+  #         fingerprints: "da:8f:d1:a4:4a:9a:85:88:be:28:95:1f:0c:07:68:08"
+  #     - run:
+  #         name: Install Ansible
+  #         command: |
+  #           apk add --update ansible
+  #     - run:
+  #         name: Run Playbook and Configure server
+  #         command: |
+  #           ansible-playbook -i inventory main.yml
 
 workflows:
   create-infra-workflow:
     jobs:
       - create_infrastructure
-      - configure_infrastructure:
-          requires: [create_infrastructure]
+      # - configure_infrastructure:
+      #     requires: [create_infrastructure]
