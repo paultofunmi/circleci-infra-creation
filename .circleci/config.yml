@@ -51,6 +51,7 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
+      - destroy_environment
       - run:
           name: smoke test
           command: |
@@ -62,7 +63,6 @@ jobs:
             else
               return 1
             fi
-      - destroy_environment
 
 workflows:
   create-infra-workflow:
