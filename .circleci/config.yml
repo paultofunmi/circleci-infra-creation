@@ -66,12 +66,11 @@ jobs:
       - destroy_environment:
           when: on_fail
 
-
 workflows:
   create-infra-workflow:
     jobs:
       - create_infrastructure
-      - smoke_test
+      - smoke_test:
           requires: [create_infrastructure]
       # - create_infrastructure
       # - configure_infrastructure
